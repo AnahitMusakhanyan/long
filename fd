@@ -1,0 +1,8 @@
+	// str->mlx = mlx_init();
+	// str->win = mlx_new_window(str->mlx, 64, 64, "so_long");
+	// player(str, str->w, str->h);
+	// draw_map(str, str->w, str->h);
+	// mlx_hook(str->win, X_EVENT_KEY_PRESS, 1L << 0, key_press, &str); //wtf is 1l
+	// mlx_hook(str->win, X_EVENT_KEY_EXIT, 1L << 0, close, &str);
+	// mlx_expose_hook(str->win, draw_map, &str);
+	// mlx_loop(str->mlx);
