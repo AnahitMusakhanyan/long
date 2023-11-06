@@ -3,49 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 17:30:16 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/02 16:01:43 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:38:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 
-// void	drawing(t_help *str, char c, int xi, int yi)
-// {
-// 	if (c == '1')
-// 		str->ptr = mlx_xpm_file_to_image(str, "./images/wall.xpm", &str->w, &str->h);
-// 	else if (c == '0')
-// 		str->ptr = mlx_xpm_file_to_image(str, "./images/path.xpm", &str->w, &str->h);
-// 	else if (c == 'P')
-// 		str->ptr = mlx_xpm_file_to_image(str, "./images/player.xpm", &str->w, &str->h);
-// 	else if (c == 'E')
-// 		str->ptr = mlx_xpm_file_to_image(str, "./images/exit.xpm", &str->w, &str->h);
-// 	else if (c == 'C')
-// 		str->ptr = mlx_xpm_file_to_image(str, "./images/coll.xpm", &str->w, &str->h);
-// 	mlx_put_image_to_window(str->mlx, str->win, str->ptr, str->w * xi, str->h *yi);
-// 	mlx_destroy_image(str->mlx, str->ptr);
-// }
+void	drawing(t_help **str, char c, int xi, int yi)
+{
+	if (c == '1')
+		*str->ptr = mlx_xpm_file_to_image(str->ptr, "./images/wall.xpm", str->w, str->h);
+	else if (c == '0')
+		*str->ptr = mlx_xpm_file_to_image(str->ptr, "./images/path.xpm", str->w, str->h);
+	else if (c == 'P')
+		*str->ptr = mlx_xpm_file_to_image(str->ptr, "./images/player.xpm", str->w, str->h);
+	else if (c == 'E')
+		*str->ptr = mlx_xpm_file_to_image(str->ptr, "./images/exit.xpm", str->w, str->h);
+	else if (c == 'C')
+		*str->ptr = mlx_xpm_file_to_image(str->ptr, "./images/coll.xpm", str->w, str->h);
+	mlx_put_image_to_window(str->mlx, str->win, str->ptr, SPRITE_W * xi, SPRITE_H *yi);
+	mlx_destroy_image(str->mlx, str->ptr);
+}
 
-// int	draw_map(t_help *str,int w, int h)
-// {
-// 	int	xi;
-// 	int	yi;
+int	draw_map(t_help **str)
+{
+	int	xi;
+	int	yi;
 
-// 	yi = -1;
-// 	while (str && ++yi < h - 1)
-// 	{
-// 		xi = -1;
-// 		while (str && ++xi < w - 1)
-// 		{
-// 			drawing(str, str->map[str->x][str->y], xi, yi);
-// 			str = str->next;
-// 		}
-// 	}
-
-// 	return (0);
-// }
+	yi = -1;
+	while (++yi < (*str)->h - 1)
+	{
+		xi = -1;
+		while (++xi < (*str)->w - 1)
+			drawing(str, *(str)->map[y][x], xi, yi);
+	}
+	return (0);
+}
 
 void	player(t_help **str)
 {

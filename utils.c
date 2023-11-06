@@ -3,43 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:01:00 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/02 15:20:52 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:42:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"so_long.h"
 
-// void	collcheck(t_map *data)
-// {
-// 	int coll;
-// 	int xi;
-// 	int yi;
-// 	t_map *cur;
+void    all_coll(t_help **str)
+{
+	int	xi;
+	int	yi;
+	int	coll;
 
-// 	cur = data;
-// 	xi = -1;
-// 	coll = 0;
-// 	while (++xi < data->w)
-// 	{
-// 		yi = -1;
-// 		while (++yi < data->h)
-// 		{
-// 			if (data->map[data->x][data->y] == 'C')
-// 				coll++;
-// 			data = data->next;
-// 		}	
-// 	}
-// 	data = cur;
-// 	if (coll == 0)
-// 		map_free(data, "you won");
-// 	else
-// 		ft_putstr_fd("collect all of the eggs", 1);;
-// }
+	yi = 0;
+	coll = 0;
+	while (++yi < str->h - 1)
+	{
+		xi = 0;
+		while (++xi < str->w - 1)
+			if (str->map2[yi][xi] == 'C')
+				coll++;
+	}
+	if (coll == 0)
+		free_map(str, "you won\n");
+	else
+		ft_putstr_fd("collect all the eggs\n", 1);
+	return (0);
+}
 
-// void    ft_close(t_map *data)
-// {
-// 	map_free(data, "game is closed");
-// }
+void    ft_close(t_map *data)
+{
+	free_map(str, "game is closed");
+}

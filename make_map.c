@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:27:25 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/02 15:57:09 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:41:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	all_map(t_help **str)
 	}
 }
 
-void	check_coll(char **res)
+int	check_coll(char **res)
 {
 	int		i;
 	int		j;
 	int		c;
 	
-	i = -1;
+	i = 0;
 	c = 0;
 	while(res[i])
 	{
@@ -73,6 +73,7 @@ void	check_coll(char **res)
 	}
 	if (!(c > 0))
 		map_error();
+	return (c);
 }
 
 void	check_data(char **res)

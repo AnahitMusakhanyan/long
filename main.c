@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:27:31 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/02 16:24:20 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:18:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ void	init_data(t_map **data, char **res)
 	(*data) = tmp;
 }
 
-void	score_check(t_help **str)
+void	score_check(t_help **str, char **res)
 {
 	int		max_score;
 	int 	exx;
 
-	// coll-y inchqan C ka map-um max_score inchqan kareli a havaqel
-
 	max_score = flood_fill(str, (*str)->px, (*str)->py, &exx);
-	if (exx == 1 && score == max_score)
+	str->coll = check_coll(res);
+	if (exx != 1 && score != max_score)
 	{
-		
+		free_res(res);
+		free_map(str);
 	}
 }
 
@@ -92,6 +92,8 @@ int	main(int ac, char **av)
 	all_map(&str);
 	make_map(res, &str);
 	player(&str);
-	score_check(&str);
+	score_check(&str, res);
+	str->step = 0;
+	moving(key, &str, str->px, str->py)
 	return (0);
 }

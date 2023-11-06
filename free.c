@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:29:04 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/01 19:05:54 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:27:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,19 @@ void	free_res(char **res)
 	free(res);
 }
 
-// void	stackfree(t_map *data)
-// {
-// 	free(data->win);
-// 	ft_putstr_fd("error", 1);
-// 	exit(1);
-// }
-
-void	free_map(t_help *str, char *s)
+void	free_map(t_help **str, char *s)
 {
 	free(str);
 	ft_putstr_fd(s, 1);
-	exit(1);
+	exit(0);
 }
 
-int	map_free(t_help *str, char *s)
+int	free_data(t_help *str, char *s)
 {
 	int	yi;
 
 	yi = 0;
 	ft_putstr_fd(s, 1);
 	mlx_destroy_window(str->mlx, str->win);
-	// free(data->map);
-	// while (yi < data->h)
-	// {
-	// 	free(data->map[data->y]);
-	// 	yi++;
-	// }
 	exit(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:44:47 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/02 16:23:18 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:44:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_map
 	int				y;
 	int				w;
 	int				h;
-	int				step;
 	struct s_map	*next;
 }					t_map;
 
@@ -54,26 +53,31 @@ typedef struct s_help
 	void			*ptr;
 	char			**map;
 	char			**map2;
+	int				step;
 }					t_help;
 
-char	*get_map(char *ptr);
-char	**check_newlines(char *ptr, char **res);
-void	check_data(char **res);
-void	all_map(t_help **str);
-void	make_map(char **res, t_help **str);
-int		flood_fill(t_help **str, int x, int y, int *exit);
+int 	flood_fill(t_help **str, int x, int y, int *exit);
+void	drawing(t_help **str, char c, int xi, int yi);
+int		draw_map(t_help **str);
+void	player(t_help **str);
 void	memory_error(void);
 void	arg_error(void);
 void	map_error(void);
 void	free_res(char **res);
-void	stackfree(t_map *data);
-void	free_map(t_help *str, char *s);
-int		draw_map(t_map *data,int w, int h);
-void	drawing(t_help *str, char c, int xi, int yi);
-void	player(t_help **str);
-int		key_press(int key, void *ptr, int x, int y);
-void	collcheck(t_map *data);
-int		map_free(t_help *str, char *s);
+void	free_map(t_help **str, char *s);
+int	free_data(t_help *str, char *s);
+void	make_map(char **res, t_help **str);
+void	all_map(t_help **str);
+int	check_coll(char **res);
+void	check_data(char **res);
+char	**check_newlines(char *ptr, char **res);
+char	*get_map(char *ptr);
+int	up(t_help **str);
+int	down(t_help **str);
+int	right(t_help **str);
+int	left(t_help **str);
+void    moving(int key, t_help **str, int x, int y);
+void    all_coll(t_help **str);
 void    ft_close(t_map *data);
 
 #endif
