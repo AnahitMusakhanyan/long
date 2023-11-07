@@ -6,7 +6,7 @@
 /*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 17:30:16 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/06 18:51:42 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:27:47 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 void	drawing(t_help **str, char c, int xi, int yi)
 {
+	int w = (*str)->w;
+	int h = (*str)->h;
+	
 	if (c == '1')
-		(*str)->ptr = mlx_xpm_file_to_image((*str)->ptr, "./images/wall.xpm", &(*str)->w, &(*str)->h);
+		(*str)->ptr = mlx_xpm_file_to_image((*str)->mlx, "./images/wall.xpm", &w, &h);
 	else if (c == '0')
-		(*str)->ptr = mlx_xpm_file_to_image((*str)->ptr, "./images/path.xpm", &(*str)->w, &(*str)->h);
+		(*str)->ptr = mlx_xpm_file_to_image((*str)->mlx, "./images/path.xpm", &w, &h);
 	else if (c == 'P')
-		(*str)->ptr = mlx_xpm_file_to_image((*str)->ptr, "./images/player.xpm", &(*str)->w, &(*str)->h);
+		(*str)->ptr = mlx_xpm_file_to_image((*str)->mlx, "./images/player.xpm", &w, &h);
 	else if (c == 'E')
-		(*str)->ptr = mlx_xpm_file_to_image((*str)->ptr, "./images/exit.xpm", &(*str)->w, &(*str)->h);
+		(*str)->ptr = mlx_xpm_file_to_image((*str)->mlx, "./images/exit.xpm", &w, &h);
 	else if (c == 'C')
-		(*str)->ptr = mlx_xpm_file_to_image((*str)->ptr, "./images/coll.xpm", &(*str)->w, &(*str)->h);
+		(*str)->ptr = mlx_xpm_file_to_image((*str)->mlx, "./images/coll.xpm", &w, &h);
 	mlx_put_image_to_window((*str)->mlx, (*str)->win, (*str)->ptr, SPRITE_W * xi, SPRITE_H * yi);
 	mlx_destroy_image((*str)->mlx, (*str)->ptr);
 }
@@ -38,7 +41,7 @@ int	draw_map(t_help **str)
 	{
 		xi = -1;
 		while (++xi < (*str)->w - 1)
-			drawing(str, (*str)->map[yi][xi], xi, yi);
+			drawing(str, (*str)->map2[yi][xi], xi, yi);
 	}
 	return (0);
 }

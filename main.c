@@ -6,7 +6,7 @@
 /*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:27:31 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/07 17:11:42 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:39:26 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_data(t_map **data, char **res)
 	t_map	*tmp;
 
 	h = 0;
-	i = 0;
+	i = 0; // -1ic?
 	w = ft_strlen(res[0]);
 	tmp = (*data);
 	while (res[h])
@@ -62,11 +62,9 @@ void	score_check(t_help **str, char **res)
 
 	max_score = flood_fill(str, (*str)->px, (*str)->py, &exx);
 	(*str)->coll = check_coll(res);
-	if (exx != 1 && (*str)->coll != max_score)
-	{
-		free_res(res);
-		free_map(str, "map error");
-	}
+	// if (exx != 1 && (*str)->coll != max_score)
+	// 	;
+	// free_map(str, "map error");
 }
 
 int	main(int ac, char **av)
@@ -91,12 +89,12 @@ int	main(int ac, char **av)
 	str->w = data->w;
 	all_map(&str);
 	make_map(res, &str);
+	player(&str);
 	score_check(&str, res);
 	str->step = 0;
 	str->mlx = mlx_init();
 	str->win = mlx_new_window(str->mlx, (str->w - 1) * SPRITE_W,
 			(str->h - 1) * SPRITE_H, "so_long");
-	player(&str);
 	draw_map(&str);
 	mlx_hook(str->win, X_EVENT_KEY_PRESS, 1L << 0, key_press, &str);
 	mlx_hook(str->win, X_EVENT_KEY_EXIT, 1L << 0, ft_close, &str);

@@ -1,10 +1,10 @@
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 SOURCES = $(wildcard *.c)
 OBJECTS = $(SOURCES:.c=.o)
 LIBFT = libft/libft.a
-MLXFLAGS = -Imlx -lmlx -framework OpenGL -framework AppKit -lz #-g -fsanitize=address
+MLXFLAGS = -Imlx -lmlx -framework OpenGL -framework AppKit -lz # -g -fsanitize=address
 RM = rm -f
 
 %.o:%.c

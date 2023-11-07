@@ -6,7 +6,7 @@
 /*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:44:47 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/07 16:59:50 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:27:39 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define W_KEY		13
 # define ESC		53
 
-# define SPRITE_H	32
-# define SPRITE_W	32
+# define SPRITE_H	64
+# define SPRITE_W	64
 
 # include<stdlib.h>
 # include"./libft/libft.h"
