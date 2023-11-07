@@ -6,7 +6,7 @@
 /*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:44:47 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/06 18:59:00 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:59:50 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	right(t_help **str, int x, int y);
 int	left(t_help **str, int x, int y);
 void    moving(int key, t_help **str, int x, int y);
 void    all_coll(t_help **str);
-void    ft_close(t_map *data);
+int    ft_close(t_help **str);
+int	sharing(t_help **str);
+int	key_press(int key, t_help **str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:27:31 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/06 18:56:54 by amusakha         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:11:42 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,16 @@ int	main(int ac, char **av)
 	str->w = data->w;
 	all_map(&str);
 	make_map(res, &str);
-	player(&str);
 	score_check(&str, res);
 	str->step = 0;
-	moving(X_EVENT_KEY_PRESS, &str, str->px, str->py);
-	// t.maz = mlx_init();
-	// t.win = mlx_new_window(t.maz, (t.map.size.x - 1) * SPRITE_W,
-	// 		(t.map.size.y - 1) * SPRITE_H, "GAME");
-	// position(&t);
-	// sharing(&t);
-	// mlx_hook(t.win, X_EVENT_KEY_PRESS, 1L << 0, pressing, &t);
-	// mlx_hook(t.win, X_EVENT_KEY_EXIT, 1L << 0, closing, &t);
-	// mlx_expose_hook(t.win, sharing, &t);
-	// mlx_loop(t.maz);
+	str->mlx = mlx_init();
+	str->win = mlx_new_window(str->mlx, (str->w - 1) * SPRITE_W,
+			(str->h - 1) * SPRITE_H, "so_long");
+	player(&str);
+	draw_map(&str);
+	mlx_hook(str->win, X_EVENT_KEY_PRESS, 1L << 0, key_press, &str);
+	mlx_hook(str->win, X_EVENT_KEY_EXIT, 1L << 0, ft_close, &str);
+	mlx_expose_hook(str->win, sharing, &str);
+	mlx_loop(str->mlx);
 	return (0);
 }

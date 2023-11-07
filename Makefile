@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 SOURCES = $(wildcard *.c)
 OBJECTS = $(SOURCES:.c=.o)
 LIBFT = libft/libft.a
-MLXFLAGS = -L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz #-g -fsanitize=address
+MLXFLAGS = -Imlx -lmlx -framework OpenGL -framework AppKit -lz #-g -fsanitize=address
 RM = rm -f
 
 %.o:%.c
