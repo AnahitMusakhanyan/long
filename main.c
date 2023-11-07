@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:27:31 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/06 16:18:08 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/06 18:56:54 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void	score_check(t_help **str, char **res)
 	int 	exx;
 
 	max_score = flood_fill(str, (*str)->px, (*str)->py, &exx);
-	str->coll = check_coll(res);
-	if (exx != 1 && score != max_score)
+	(*str)->coll = check_coll(res);
+	if (exx != 1 && (*str)->coll != max_score)
 	{
 		free_res(res);
-		free_map(str);
+		free_map(str, "map error");
 	}
 }
 
@@ -94,6 +94,15 @@ int	main(int ac, char **av)
 	player(&str);
 	score_check(&str, res);
 	str->step = 0;
-	moving(key, &str, str->px, str->py)
+	moving(X_EVENT_KEY_PRESS, &str, str->px, str->py);
+	// t.maz = mlx_init();
+	// t.win = mlx_new_window(t.maz, (t.map.size.x - 1) * SPRITE_W,
+	// 		(t.map.size.y - 1) * SPRITE_H, "GAME");
+	// position(&t);
+	// sharing(&t);
+	// mlx_hook(t.win, X_EVENT_KEY_PRESS, 1L << 0, pressing, &t);
+	// mlx_hook(t.win, X_EVENT_KEY_EXIT, 1L << 0, closing, &t);
+	// mlx_expose_hook(t.win, sharing, &t);
+	// mlx_loop(t.maz);
 	return (0);
 }

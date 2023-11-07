@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:27:25 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/06 17:41:06 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/06 18:57:18 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	all_map(t_help **str)
 		(*str)->map2[i] = (char *)malloc(((*str)->w) * sizeof(char));
 		if ((*str)->map[i] == NULL || (*str)->map2[i] == NULL)
 		{
-			free_map((*str), "failed to allocation memory");
+			free_map(str, "failed to allocation memory");
 			free((*str)->map);
 		}
 		i++;

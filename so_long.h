@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amusakha <amusakha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 12:44:47 by amusakha          #+#    #+#             */
-/*   Updated: 2023/11/06 17:44:05 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/06 18:59:00 by amusakha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ int	check_coll(char **res);
 void	check_data(char **res);
 char	**check_newlines(char *ptr, char **res);
 char	*get_map(char *ptr);
-int	up(t_help **str);
-int	down(t_help **str);
-int	right(t_help **str);
-int	left(t_help **str);
+int	up(t_help **str, int x, int y);
+int	down(t_help **str, int x, int y);
+int	right(t_help **str, int x, int y);
+int	left(t_help **str, int x, int y);
 void    moving(int key, t_help **str, int x, int y);
 void    all_coll(t_help **str);
 void    ft_close(t_map *data);
